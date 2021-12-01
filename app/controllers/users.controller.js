@@ -125,7 +125,7 @@ exports.validUser = (req, res) => {
   // Save User in the database
   User.validUser(req.body.email,req.body.password, (err, data) => {
     if (err)
-      res.status(500).send("Invalid user");
-    else res.send("Valid user");
+      res.status(500).send({message: "Invalid"});
+    else res.send({message: "Valid"});
   });
 };
