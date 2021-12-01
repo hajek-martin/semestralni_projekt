@@ -126,6 +126,6 @@ exports.validUser = (req, res) => {
   User.validUser(req.body.email,req.body.password, (err, data) => {
     if (err)
       res.status(500).send("Invalid user");
-    else res.send("Správný user");
+    else res.send("Valid user");
   });
 };

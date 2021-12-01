@@ -19,12 +19,6 @@ app.use(express.json()); /* bodyParser.json() is deprecated */
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true })); /* bodyParser.urlencoded() is deprecated */
 
-// simple route
-/*
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});*/
-
 // Práce s userem
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/login.routes")(app)
