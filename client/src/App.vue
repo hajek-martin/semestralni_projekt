@@ -10,18 +10,11 @@
 <script>
     export default {
         name: 'App',
-        data() {
-            return {
-                authenticated: false,
-                mockAccount: {
-                    username: "nraboy",
-                    password: "password"
-                }
-            }
-        },
         mounted() {
-            if(!this.authenticated) {
-                this.$router.replace({ name: "login" });
+            if(!this.authenticated && this.$router.currentRoute.path == "/login") {
+                console.log("roue: " + this.$router.currentRoute.path)
+                //this.$router.replace({ name: "login" });
+
             }
         },
         methods: {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginComponent from "../views/login.vue"
-import SecureComponent from "../views/secure.vue"
+import TodoList from "../views/todolist.vue"
 
 Vue.use(VueRouter)
 
@@ -16,12 +16,12 @@ export default new VueRouter({
         {
             path: "/login",
             name: "login",
-            component: LoginComponent
+            component: LoginComponent,
         },
         {
-            path: "/secure",
-            name: "secure",
-            component: SecureComponent
+            path: "/todolist",
+            name: "todolist",
+            component: TodoList
         }
     ]
 })
