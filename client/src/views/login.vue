@@ -1,72 +1,89 @@
 <template>
+  <html lang="cs">
+    <body class="text-center">
+      <main class="form-signin">
+        <form>
+          <img
+            class="mb-4"
+            src="../assets/js.png"
+            alt=""
+            width="72"
+            height="72"
+          />
+          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+              v-model="input.username"
+            />
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              v-model="input.password"
+            />
+          </div>
 
-    
-<main class="form-signin">
-  <form>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" v-model="input.username">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="input.password">
-      <label for="floatingPassword">Password</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit" v-on:click="login()">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-  </form>
-</main>
-
-
-
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me" /> Remember me
+            </label>
+          </div>
+          <button
+            class="w-100 btn btn-lg btn-primary"
+            type="submit"
+            v-on:click="login()"
+          >
+            Sign in
+          </button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2021–2021</p>
+        </form>
+      </main>
+    </body>
+  </html>
 </template>
 
 <script>
 import axios from "axios";
-    export default {
-        name: 'Login',
-        data() {
-            return {
-                input: {
-                    username: "",
-                    password: ""
-                }
-            }
-        },
-        methods: {
-            login:  async function() {
-                if(this.input.username != "" && this.input.password != "") {
-                    const response = await axios.post('http://localhost:8080/api/users/valid', {"email": this.input.username, "password": this.input.password});
-                    if(response.data.message == "Valid") {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "todolist"});
-                    }
-                }
-            }
+export default {
+  name: "Login",
+  data() {
+    return {
+      input: {
+        username: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    login: async function () {
+      if (this.input.username != "" && this.input.password != "") {
+        const response = await axios.post(
+          "http://localhost:8080/api/users/valid",
+          { email: this.input.username, password: this.input.password }
+        );
+        if (response.data.message == "Valid") {
+          this.$emit("authenticated", true);
+          this.$router.replace({ name: "todolist" });
         }
-    }
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
-    html,
-body {
-  height: 100%;
-}
 
 body {
   display: flex;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .form-signin {
@@ -96,4 +113,7 @@ body {
   border-top-right-radius: 0;
 }
 
+.text-muted {
+  margin-top: 16px !important;
+}
 </style>

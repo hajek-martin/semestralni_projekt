@@ -60,7 +60,7 @@
                         {{ item.content }}<i class="input-helper"></i
                       ></label>
                     </div>
-                    <div class="testik">
+                    <div class="task-icons">
                       <b-icon
                         icon="trash"
                         class="remove mdi"
@@ -69,7 +69,6 @@
                       <b-icon
                         icon="pencil"
                         class="edit mdi"
-                        v-on:click="taskEdit(item.id, item.content)"
                       ></b-icon>
                     </div>
                   </li>
@@ -88,8 +87,8 @@ import axios from "axios";
 export default {
   name: "Todolist",
   data() {
-    console.log("data");
     return {
+      isModalVisible: false,
       input: {
         content: "",
         task_filter: 1,
@@ -155,9 +154,6 @@ export default {
       this.input.filter = type;
       this.refresh();
     },
-    taskEdit: async function (id, content) {
-      console.log("editing " + id + " cont: " + content);
-    },
   },
   mounted() {
     console.log("refrshing");
@@ -167,7 +163,7 @@ export default {
 </script>
 
 <style scoped>
-.testik {
+.task-icons {
   float: right;
   width: 50px;
   position: relative;
