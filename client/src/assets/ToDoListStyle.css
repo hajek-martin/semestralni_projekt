@@ -1,50 +1,3 @@
-<template>
-  <body>
-    <div class="page-content page-container" id="page-content">
-      <div class="padding">
-        <div class="row container d-flex justify-content-center">
-          <div class="col-md-12">
-            <div class="card px-3">
-              <div class="card-body">
-                <h4 class="card-title">TO-DO List</h4>
-                <AddTask></AddTask>
-                <FilterList></FilterList>
-                <TaskList></TaskList>
-              </div>
-            </div>
-            <Exports></Exports>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
-</template>
-
-<script>
-import AddTask from "../components/AddTask.vue";
-import FilterList from "../components/FilterList.vue";
-import TaskList from "../components/TaskList.vue"
-import Exports from "../components/Exports.vue"
-export default {
-  name: "TodoList",
-  data() {
-    return {}
-  },
-  components: {
-    AddTask,
-    FilterList,
-    TaskList,
-    Exports
-  },
-  head: {
-    title: {
-      inner: 'ToDoList'
-    },
-  }
-};
-</script>
-
-<style scoped>
 .task-icons {
   float: right;
   width: 50px;
@@ -269,4 +222,7 @@ export default {
   list-style: none;
   margin-bottom: 0;
 }
-</style>
+
+.nav-item{
+  cursor: pointer;
+}

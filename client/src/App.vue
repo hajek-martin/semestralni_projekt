@@ -1,43 +1,26 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <router-link v-if="authenticated" to="/login" v-on:click.native="logout()" replace>Logout</router-link>
-        </div>
-        <router-view @authenticated="setAuthenticated" />
-    </div>
+  <div id="app">
+    <div id="nav"></div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'App',
-        mounted() {
-            if(!this.authenticated && this.$router.currentRoute.path == "/login") {
-                console.log("roue: " + this.$router.currentRoute.path)
-                //this.$router.replace({ name: "login" });
-
-            }
-        },
-        methods: {
-            setAuthenticated(status) {
-                this.authenticated = status;
-            },
-            logout() {
-                this.authenticated = false;
-            }
-        }
-    }
+export default {
+  name: "App",
+};
 </script>
 
 <style>
-    body {
-        background-color: #F0F0F0;
-    }
-    h1 {
-        padding: 0;
-        margin-top: 0;
-    }
-    #app {
-        width: 1024px;
-        margin: auto;
-    }
+body {
+  background-color: #f0f0f0;
+}
+h1 {
+  padding: 0;
+  margin-top: 0;
+}
+#app {
+  width: 1024px;
+  margin: auto;
+}
 </style>

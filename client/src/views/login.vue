@@ -34,10 +34,11 @@
               <input type="checkbox" value="remember-me" /> Remember me
             </label>
           </div>
+          <p v-if="showError" id="error">Username or Password is incorrect</p>
           <button
             class="w-100 btn btn-lg btn-primary"
             type="submit"
-            v-on:click="login()"
+            v-on:click="login"
           >
             Sign in
           </button>
@@ -50,6 +51,7 @@
 
 <script>
 import axios from "axios";
+import { mapMutations } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -58,19 +60,21 @@ export default {
         username: "",
         password: "",
       },
+      showError: false
     };
   },
   methods: {
-    login: async function () {
+    ...mapMutations(["setUser", "setToken"]),
+    async login(e) {
+      e.preventDefault();
       if (this.input.username != "" && this.input.password != "") {
         const response = await axios.post(
           "http://localhost:8080/api/users/valid",
           { email: this.input.username, password: this.input.password }
         );
-        if (response.data.message == "Valid") {
-          this.$emit("authenticated", true);
-          this.$router.replace({ name: "todolist" });
-        }
+        this.setUser(response.data.user);
+        this.setToken(response.data.token);
+        this.$router.push("/todolist");
       }
     },
   },
