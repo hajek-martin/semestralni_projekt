@@ -28,12 +28,6 @@
               v-model="input.password"
             />
           </div>
-
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>
           <p v-if="showError" id="error">Username or Password is incorrect</p>
           <button
             class="w-100 btn btn-lg btn-primary"
@@ -76,6 +70,7 @@ export default {
         this.setToken(response.data.token);
         this.$router.push("/todolist");
       }
+      showError = true;
     },
   },
 };
