@@ -11,6 +11,7 @@ var corsOptions = {
   origin: "http://localhost:8081"
 };
 
+app.use(express.static("public"));
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
 app.use(express.json());
