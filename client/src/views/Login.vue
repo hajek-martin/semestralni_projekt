@@ -54,7 +54,7 @@ export default {
         username: "",
         password: "",
       },
-      showError: false
+      showError: false,
     };
   },
   methods: {
@@ -62,15 +62,24 @@ export default {
     async login(e) {
       e.preventDefault();
       if (this.input.username != "" && this.input.password != "") {
-        const response = await axios.post(
-          "https://wea-todolist.herokuapp.com/api/users/valid",
-          { email: this.input.username, password: this.input.password }
-        );
-        this.setUser(response.data.user);
-        this.setToken(response.data.token);
-        this.$router.push("/todolist");
+        axios
+          .post("https://wea-todolist.herokuapp.com/api/users/valid", {
+            email: this.input.username,
+            password: this.input.password,
+          })
+          .then((response) => {
+            this.setUser(response.data.user);
+            this.setToken(response.data.token);
+            this.$router.push("/todolist");
+          })
+          .catch(() => {
+            console.log | "then";
+            console.log("Invalid user");
+            this.showError = true;
+            this.input.username = "";
+            this.input.password = "";
+          });
       }
-      showError = true;
     },
   },
 };
