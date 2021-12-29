@@ -28,7 +28,7 @@ export default {
     TaskAdd: async function () {
       console.log("AddTask.TaskAdd");
       if (this.content != "") {
-        await axios.post("http://localhost:8080/api/tasks/", {
+        await axios.post("https://wea-todolist.herokuapp.com/api/tasks/", {
           content: this.content,
         });
       }

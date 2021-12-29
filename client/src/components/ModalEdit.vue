@@ -34,7 +34,7 @@ export default {
     methods: {
       HandleOk: async function() {
         console.log("ModalEdit.HandleOk")
-        await axios.put("http://localhost:8080/api/tasks/" + this.id, {
+        await axios.put("https://wea-todolist.herokuapp.com/api/tasks/" + this.id, {
           content: this.task_input,
           completed: this.completed,
       });
@@ -42,7 +42,7 @@ export default {
       ResetModal: async function(){
         console.log("ModalEdit.ResetModal")
         this.id = this.$route.query.id;
-        var result = await axios.get("http://localhost:8080/api/tasks/" + this.id);
+        var result = await axios.get("https://wea-todolist.herokuapp.com/api/tasks/" + this.id);
         this.task_input = result.data.content;
         this.completed = result.data.completed;
       }

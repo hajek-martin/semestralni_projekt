@@ -69,7 +69,7 @@ export default {
       e.preventDefault();
       if (this.input.username != "" && this.input.password != "") {
         const response = await axios.post(
-          "http://localhost:8080/api/users/valid",
+          "https://wea-todolist.herokuapp.com/api/users/valid",
           { email: this.input.username, password: this.input.password }
         );
         this.setUser(response.data.user);

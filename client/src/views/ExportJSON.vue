@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     DownloadData() {
-      axios.get("http://localhost:8080/api/tasks/").then((response) => {
+      axios.get("https://wea-todolist.herokuapp.com/api/tasks/").then((response) => {
         this.tasks = response.data;
       });
     },
