@@ -30,6 +30,7 @@
     <p>Prvním limitem je že server musí každou vteřinu posílat na websocket server zprávu (interval by možná mohl být delší). Je to z důvodu že po cca 30 vteřinách když se client odpojí od aplikace Heroku si myslí že apliakce padla protože websocket server je nečinný a spadne s chybou H15.</p>
     <p>Dále jsem musel změnit připojení z klasické na pool, protože aplikace po odpojení ztratila spojení s Heroku ClearDB databází a spadla.</p>
     <p>Client site i Server site běží na jedné URL (mělo by to běžet na oddělených strojích) nicméně nevím jak by to bylo s free plánem od Heroku (ačkoliv je add-on ClearDB zadarmo Heroku po vás žádá platební kartu přidat a nerad bych aby mi účtovali za druhou aplikaci).</p>
+    <p>Jelikož je jakkákoliv změna zpracována odesláním websocketu občas trošičku déle trvá než se změna projeví (např. při odškrtnutí úkolu). Je to nejspíše z důvodu pomalejší odezvy websocketu jelikož free plan asi nenabízí nejvyšší rychlosti. Na localehostu to funguje prakticky okamžitě.</p>
   </body>
 </template>
 
