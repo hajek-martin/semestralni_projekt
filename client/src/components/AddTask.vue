@@ -22,18 +22,26 @@ export default {
   data() {
     return {
       content: "",
+      connection: null,
     };
   },
   methods: {
     TaskAdd: async function () {
       console.log("AddTask.TaskAdd");
       if (this.content != "") {
-        await axios.post("https://wea-todolist.herokuapp.com/api/tasks/", {
+        await axios.post(process.env.VUE_APP_URL + "/api/tasks/", {
           content: this.content,
         });
       }
       this.content = "";
+      this.connection.send("")
     },
+  },
+  created() {
+    this.connection = new WebSocket(process.env.VUE_APP_SOCKET_URL)
+    this.connection.onopen = function(event) {
+      console.log(event);
+    }
   },
 };
 </script>

@@ -38,6 +38,7 @@
           </button>
           <p class="mt-5 mb-3 text-muted">&copy; 2021–2021</p>
         </form>
+        <About></About>
       </main>
     </body>
   </html>
@@ -46,6 +47,7 @@
 <script>
 import axios from "axios";
 import { mapMutations } from "vuex";
+import About from "../components/About.vue"
 export default {
   name: "Login",
   data() {
@@ -63,7 +65,7 @@ export default {
       e.preventDefault();
       if (this.input.username != "" && this.input.password != "") {
         axios
-          .post("https://wea-todolist.herokuapp.com/api/users/valid", {
+          .post(process.env.VUE_APP_URL+ "/api/users/valid", {
             email: this.input.username,
             password: this.input.password,
           })
@@ -82,6 +84,9 @@ export default {
       }
     },
   },
+  components: {
+    About
+  }
 };
 </script>
 

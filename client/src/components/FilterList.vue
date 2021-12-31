@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       filter: null,
+      connection: null,
     };
   },
   methods: {
@@ -37,7 +38,14 @@ export default {
       console.log("FilterList.ApplyFilter");
       this.filter = type;
       this.$router.push({ path: 'todolist', query: { filter: this.filter }}).catch(()=>{});
+      this.connection.send("")
     },
+  },
+  created() {
+    this.connection = new WebSocket(process.env.VUE_APP_SOCKET_URL)
+    this.connection.onopen = function(event) {
+      console.log(event);
+    }
   },
 };
 </script>

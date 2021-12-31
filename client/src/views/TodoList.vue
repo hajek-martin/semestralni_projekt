@@ -13,6 +13,7 @@
               </div>
             </div>
             <Exports></Exports>
+            <About></About>
           </div>
         </div>
       </div>
@@ -25,6 +26,7 @@ import AddTask from "../components/AddTask.vue";
 import FilterList from "../components/FilterList.vue";
 import TaskList from "../components/TaskList.vue"
 import Exports from "../components/Exports.vue"
+import About from "../components/About.vue"
 export default {
   name: "TodoList",
   data() {
@@ -34,7 +36,8 @@ export default {
     AddTask,
     FilterList,
     TaskList,
-    Exports
+    Exports,
+    About
   },
   head: {
     title: {
